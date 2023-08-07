@@ -4,10 +4,11 @@
 #include <iostream>
 #include <string>
 #include "Task.h"
+#include "TaskHandler.h"
 
 class Menu {
 public:
-    //Menu() { std::cout << "Hallo Menu!\n"; }
+    Menu() { std::cout << "Hallo Menu!\n"; }
     void mainMenu();
     void taskMenu();
     void listMenu();
@@ -16,5 +17,6 @@ public:
 private:
     int input;
     int menu {1};
+    TaskHandler taskHandler;
 };
 #endif

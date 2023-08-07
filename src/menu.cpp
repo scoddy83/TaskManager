@@ -12,8 +12,7 @@ void Menu::manageMenu() {
             taskMenu();
             break;
         case 3:
-            std::cout << "List Menu\n";
-            menu = 0;
+            listMenu();
             break;
         
         default:
@@ -45,7 +44,7 @@ void Menu::mainMenu() {
 
     case 0:
         std::cout << "Exit\n";
-        menu = 1;
+        menu = 0;
         break;
     
     default:
@@ -67,10 +66,16 @@ void Menu::taskMenu() {
     {
     case 1:
         std::cout << "create a new Task\n";
+        taskHandler.createNewTask();
+        menu = 2;
         break;
 
     case 2:
-        std::cout << "delete a Task\n";
+        std::cout << "delete Task\n";
+        int id;
+        std::cin << id;
+        taskHandler.deleteTask(&id);
+        menu = 2;
         break;
 
     case 0:
@@ -80,6 +85,34 @@ void Menu::taskMenu() {
     
     default:
         std::cout << "Keine Valide Eingabe!\n";
+        menu = 2;
+        break;
+    }
+}
+
+void Menu::listMenu() {
+    std::cout << "\n\nLIST MENU\n";
+    std::cout << "1) List all Tasks\n";
+    std::cout << "0) Exit Task Menu\n";
+
+    std::cout << "Select yout option:  ";
+    std::cin >> input;
+
+    switch (input)
+    {
+    case 1:
+        taskHandler.listTasks();
+        menu = 3;
+        break;
+
+    case 0:
+        std::cout << "Exit List Menu\n";
+        menu = 1;
+        break;
+    
+    default:
+        std::cout << "Keine Valide Eingabe!\n";
+        menu = 3;
         break;
     }
 }
